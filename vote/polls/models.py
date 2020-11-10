@@ -33,7 +33,7 @@ class Teachers(models.Model):
     sex = models.BooleanField(choices=SEX_OPTIONS, default=True, verbose_name='性别')
     birth = models.DateField(verbose_name='出生日期')
     intro = models.CharField(max_length=1000, verbose_name='介绍')
-    photo = models.CharField(max_length=255, verbose_name='照片')
+    photo = models.ImageField(max_length=255, verbose_name='照片')
     good_count = models.IntegerField(default=0, db_column='gcount', verbose_name='好评数')
     bad_count = models.IntegerField(default=0, db_column='bcount', verbose_name='差评数')
     subject = models.ForeignKey(to=Subject, on_delete=models.DO_NOTHING, db_column='sno', verbose_name='所属学科')
@@ -43,3 +43,16 @@ class Teachers(models.Model):
         db_table = 'tb_teachers'
         verbose_name = '老师'
         verbose_name_plural = '老师'
+
+class User(models.Model):
+    no = models.AutoField(primary_key=True, verbose_name='编号')
+    username = models.CharField(max_length=20, unique=True, verbose_name='用户名')
+    password = models.CharField(max_length=32, verbose_name='密码指纹')
+    tel = models.CharField(max_length=20, verbose_name='手机号')
+    reg_date = models.DateTimeField(auto_now_add=True, verbose_name='注册日期')
+
+
+    class Meta:
+        db_table = 'tb_user'
+        verbose_name = '用户'
+        verbose_name_plural = '用户'

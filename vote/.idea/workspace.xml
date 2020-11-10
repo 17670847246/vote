@@ -44,7 +44,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/polls" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../exercise/vote2" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -103,39 +103,40 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="447" y="73" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604931582889">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="447" y="73" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1604931582889" />
-    <state x="771" y="174" key="FileChooserDialogImpl" timestamp="1604931577541">
+    <state x="771" y="174" key="FileChooserDialogImpl" timestamp="1605001152871">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="771" y="174" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1604931577541" />
-    <state width="1076" height="198" key="GridCell.Tab.0.bottom" timestamp="1604986102749">
+    <state x="771" y="174" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1605001152871" />
+    <state width="1076" height="198" key="GridCell.Tab.0.bottom" timestamp="1605002564545">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1076" height="198" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1604986102749" />
-    <state width="1076" height="198" key="GridCell.Tab.0.center" timestamp="1604986102749">
+    <state width="1076" height="198" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605002564545" />
+    <state width="1076" height="198" key="GridCell.Tab.0.center" timestamp="1605002564545">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1076" height="198" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1604986102749" />
-    <state width="1076" height="198" key="GridCell.Tab.0.left" timestamp="1604986102749">
+    <state width="1076" height="198" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605002564545" />
+    <state width="1076" height="198" key="GridCell.Tab.0.left" timestamp="1605002564545">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1076" height="198" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1604986102749" />
-    <state width="1076" height="198" key="GridCell.Tab.0.right" timestamp="1604986102749">
+    <state width="1076" height="198" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605002564545" />
+    <state width="1076" height="198" key="GridCell.Tab.0.right" timestamp="1605002564545">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1076" height="198" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1604986102749" />
+    <state width="1076" height="198" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605002564545" />
     <state x="469" y="62" key="SettingsEditor" timestamp="1604930603322">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="469" y="62" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1604930603322" />
-    <state x="817" y="146" width="672" height="678" key="search.everywhere.popup" timestamp="1604932351731">
+    <state x="817" y="146" width="672" height="678" key="search.everywhere.popup" timestamp="1604987541519">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="817" y="146" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1604932351731" />
+    <state x="817" y="146" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1604987541519" />
   </component>
 </project>

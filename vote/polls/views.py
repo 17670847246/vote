@@ -52,6 +52,14 @@ def get_captcha(request: HttpRequest) -> HttpResponse:
 
 
 def login(request: HttpRequest) -> HttpResponse:
+    """登入"""
+    # request.path / request.method / request.is_ajax()
+    # request.GET / request.POST / request.FILES / request.META / request.COOKIES
+    # request.data / request.get_full_path() / request.issecure()
+    if request.method == 'POST':
+        username = request.POST.get('username', '')
+        password = request.POST.get('password', '')
+        print(username, password)
     return render(request, 'login.html')
 
 
