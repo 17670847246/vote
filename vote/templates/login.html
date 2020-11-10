@@ -38,12 +38,18 @@
             text-align: center;
             margin-top: 20px;
         }
+        .hint {
+            color: red;
+            font-size: 12px;
+        }
     </style>
 </head>
 <body>
     <div id="container">
+
         <h1>用户登录</h1>
         <hr>
+        <p class="hint">{{ hint }}</p>
         <form action="/login/" method="post">
             {% csrf_token %}
             <fieldset>

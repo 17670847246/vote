@@ -5,8 +5,8 @@ from django.shortcuts import render, redirect
 
 # Create your views here.
 from polls.captcha import Captcha
-from polls.models import Subject, Teachers
-from polls.utils import random_captcha
+from polls.models import Subject, Teachers, User
+from polls.utils import random_captcha, to_md5_hex
 
 
 def show_subject(request: HttpRequest) -> HttpResponse:
@@ -56,11 +56,22 @@ def login(request: HttpRequest) -> HttpResponse:
     # request.path / request.method / request.is_ajax()
     # request.GET / request.POST / request.FILES / request.META / request.COOKIES
     # request.data / request.get_full_path() / request.issecure()
+    hint = ''
     if request.method == 'POST':
         username = request.POST.get('username', '')
         password = request.POST.get('password', '')
-        print(username, password)
-    return render(request, 'login.html')
+        if username and password:
+            password = to_md5_hex(password)
+            user = User.objects.filter(username=username, password=password).first()
+            if user:
+                request.session['userid'] = user.no
+                request.session['username'] = user.username
+                return redirect('/')
+            else:
+                hint = '用户名或密码错误'
+        else:
+            hint = '请输入有效的用户名和密码'
+    return render(request, 'login.html', {'hint': hint})
 
 
 def register(request: HttpRequest) -> HttpResponse:

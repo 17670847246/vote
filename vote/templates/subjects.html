@@ -31,7 +31,12 @@
 <body>
     <div id="container">
         <div class="user">
-            <a href="/login/">用户登录</a>
+            {% if request.session.userid %}
+                {{ request.session.username }}
+                <a href="">注销</a>
+            {% else %}
+                <a href="/login/">用户登录</a>
+            {% endif %}
             <a href="/register/">快速注册</a>
         </div>
         <h1>北京千锋互联科技有限公司所有学科</h1>
