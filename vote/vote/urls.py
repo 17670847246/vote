@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from polls.views import show_subject, show_teachers, praise_or_ratings
+from polls.views import show_subject, show_teachers, praise_or_ratings, login, register, get_captcha
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,4 +24,7 @@ urlpatterns = [
     path('teachers/', show_teachers),
     path('praise/', praise_or_ratings),
     path('ratings/', praise_or_ratings),
+    path('captcha/', get_captcha),
+    path('login/', login),
+    path('register/', register),
 ]
