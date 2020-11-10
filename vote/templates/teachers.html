@@ -91,11 +91,13 @@
                     anchor.next().text(json.count)
                 } else {
                     alert(json.message)
+                    if (json.code === 10002) {
+                        location.href = '/login/'
+                    }
                 }
             })
         })
     </script>
     <a href="/">返回首页</a>
-
 </body>
 </html>

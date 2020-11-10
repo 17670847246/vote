@@ -33,7 +33,7 @@
         <div class="user">
             {% if request.session.userid %}
                 {{ request.session.username }}
-                <a href="">注销</a>
+                <a href="/logout/">注销</a>
             {% else %}
                 <a href="/login/">用户登录</a>
             {% endif %}

@@ -29,19 +29,22 @@ def show_teachers(request: HttpRequest) -> HttpResponse:
 
 def praise_or_ratings(request: HttpRequest) -> HttpResponse:
     """好评"""
-    try:
-        tno = request.GET['tno']
-        teacher = Teachers.objects.get(no=tno)
-        if request.path == '/praise/':
-            teacher.good_count += 1
-            count = teacher.good_count
-        else:
-            teacher.bad_count += 1
-            count = teacher.bad_count
-        teacher.save()
-        data = {'code': 10000, 'message': '投票成功', 'count': count}
-    except (KeyError, ValueError, Teachers.DoesNotExist):
-        data = {'code': 10001, 'message': '投票失败'}
+    if request.session.get('userid'):
+        try:
+            tno = request.GET['tno']
+            teacher = Teachers.objects.get(no=tno)
+            if request.path == '/praise/':
+                teacher.good_count += 1
+                count = teacher.good_count
+            else:
+                teacher.bad_count += 1
+                count = teacher.bad_count
+            teacher.save()
+            data = {'code': 10000, 'message': '投票成功', 'count': count}
+        except (KeyError, ValueError, Teachers.DoesNotExist):
+            data = {'code': 10001, 'message': '投票失败'}
+    else:
+        data = {'code': 10002, 'message': '请先登录再投票'}
     return JsonResponse(data)
 
 
@@ -73,6 +76,10 @@ def login(request: HttpRequest) -> HttpResponse:
             hint = '请输入有效的用户名和密码'
     return render(request, 'login.html', {'hint': hint})
 
+def logout(request: HttpRequest) -> HttpResponse:
+    """注销"""
+    request.session.flush()
+    return redirect('/login/')
 
 def register(request: HttpRequest) -> HttpResponse:
     return render(request, 'register.html')
