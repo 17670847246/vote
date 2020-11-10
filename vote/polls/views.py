@@ -12,8 +12,12 @@ def show_subject(request: HttpRequest) -> HttpResponse:
 
 def show_teachers(request: HttpRequest) -> HttpResponse:
     try:
-        sno = int(request.GET.get('sno', ''))
+        sno = int(request.GET['sno'])
+        subject = Subject.objects.get(no=sno)
         queryset = Teachers.objects.filter(subject__no=sno)
-        return render(request, 'teachers.html', {'teachers': queryset})
-    except (KeyError, ValueError):
+        return render(request, 'teachers.html', {
+            'teachers': queryset,
+            'subject': subject,
+        })
+    except (KeyError, ValueError, Subject.DoesNotExist):
         return redirect('/')
