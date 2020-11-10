@@ -1,4 +1,6 @@
-from django.http import HttpRequest, HttpResponse
+import json
+
+from django.http import HttpRequest, HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 
 # Create your views here.
@@ -24,26 +26,19 @@ def show_teachers(request: HttpRequest) -> HttpResponse:
 
 
 
-def praise(request: HttpRequest) -> HttpResponse:
+def praise_or_ratings(request: HttpRequest) -> HttpResponse:
     """好评"""
-    sno = request.GET.get('sno', '0')
     try:
         tno = request.GET['tno']
         teacher = Teachers.objects.get(no=tno)
-        teacher.good_count += 1
+        if request.path == '/praise/':
+            teacher.good_count += 1
+            count = teacher.good_count
+        else:
+            teacher.bad_count +=1
+            count = teacher.bad_count
         teacher.save()
+        data = {'code': 10000, 'message': '投票成功', 'count':count}
     except (KeyError, ValueError, Teachers.DoesNotExist):
-        pass
-    return redirect(f'/teachers/?sno={sno}')
-
-def ratings(request: HttpRequest) -> HttpResponse:
-    """差评"""
-    sno = request.GET.get('sno', '0')
-    try:
-        tno = request.GET['tno']
-        teacher = Teachers.objects.get(no=tno)
-        teacher.bad_count += 1
-        teacher.save()
-    except (KeyError, ValueError, Teachers.DoesNotExist):
-        pass
-    return redirect(f'/teachers/?sno={sno}')
+        data = {'code': 10001, 'message': '投票失败'}
+    return JsonResponse(data)

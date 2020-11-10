@@ -16,12 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from polls.views import show_subject, show_teachers, praise, ratings
+from polls.views import show_subject, show_teachers, praise_or_ratings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', show_subject),
     path('teachers/', show_teachers),
-    path('praise/', praise),
-    path('ratings/', ratings),
+    path('praise/', praise_or_ratings),
+    path('ratings/', praise_or_ratings),
 ]
