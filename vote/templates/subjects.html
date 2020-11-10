@@ -40,7 +40,7 @@
             {% for subject in subjects %}
             <dl>
                 <dt>
-                    <a href="teachers.html">{{ subject.name }}</a>
+                    <a href="/teachers/?sno={{ subject.no }}">{{ subject.name }}</a>
                     {% if subject.is_hot %}
                     <img src="/static/images/hot-icon-small.png">
                     {% endif %}
