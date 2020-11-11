@@ -56,10 +56,8 @@ def get_captcha(request: HttpRequest) -> HttpResponse:
 
 def login(request: HttpRequest) -> HttpResponse:
     """登入"""
-    # request.path / request.method / request.is_ajax()
-    # request.GET / request.POST / request.FILES / request.META / request.COOKIES
-    # request.data / request.get_full_path() / request.issecure()
     hint = ''
+    backurl = request.GET.get('backurl', '/')
     if request.method == 'POST':
         username = request.POST.get('username', '')
         password = request.POST.get('password', '')
@@ -69,12 +67,13 @@ def login(request: HttpRequest) -> HttpResponse:
             if user:
                 request.session['userid'] = user.no
                 request.session['username'] = user.username
-                return redirect('/')
+                backurl = request.POST.get('backurl', '/')
+                return redirect(backurl)
             else:
                 hint = '用户名或密码错误'
         else:
             hint = '请输入有效的用户名和密码'
-    return render(request, 'login.html', {'hint': hint})
+    return render(request, 'login.html', {'hint': hint, 'backurl':backurl})
 
 def logout(request: HttpRequest) -> HttpResponse:
     """注销"""

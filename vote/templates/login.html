@@ -52,6 +52,7 @@
         <p class="hint">{{ hint }}</p>
         <form action="/login/" method="post">
             {% csrf_token %}
+            <input type="hidden" name="backurl" value="{{ backurl }}">
             <fieldset>
                 <legend>用户信息</legend>
                 <div class="input">

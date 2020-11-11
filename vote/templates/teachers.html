@@ -92,7 +92,8 @@
                 } else {
                     alert(json.message)
                     if (json.code === 10002) {
-                        location.href = '/login/'
+                        let backurl = encodeURIComponent(location.pathname + location.search)
+                        location.href = '/login/?backurl=' + backurl
                     }
                 }
             })
