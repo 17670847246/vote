@@ -16,7 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from polls.views import show_subject, show_teachers, praise_or_ratings, login, register, get_captcha, logout
+from polls.views import show_subject, show_teachers, praise_or_ratings, login, register, get_captcha, logout, \
+    send_mobile_code
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,4 +29,7 @@ urlpatterns = [
     path('login/', login),
     path('register/', register),
     path('logout/', logout),
+    # /mobile/?tel=12341535231
+    # /mobile/1312315344/
+    path('mobile/<str:tel>/', send_mobile_code),
 ]

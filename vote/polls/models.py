@@ -48,7 +48,7 @@ class User(models.Model):
     no = models.AutoField(primary_key=True, verbose_name='编号')
     username = models.CharField(max_length=20, unique=True, verbose_name='用户名')
     password = models.CharField(max_length=32, verbose_name='密码指纹')
-    tel = models.CharField(max_length=20, verbose_name='手机号')
+    tel = models.CharField(max_length=20, unique=True, verbose_name='手机号')
     reg_date = models.DateTimeField(auto_now_add=True, verbose_name='注册日期')
 
 
