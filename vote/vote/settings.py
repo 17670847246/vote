@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
@@ -26,7 +25,6 @@ SECRET_KEY = '@26-i@&pnrtlx+hu9dv!8b^y4(b!uzy^h%2bco9umsfn)#og_w'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -70,7 +68,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'vote.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
@@ -86,7 +83,6 @@ DATABASES = {
         'TIME_ZONE': 'Asia/Chongqing'
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -106,7 +102,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
@@ -120,9 +115,29 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR,'static'), ]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+
+Caches = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        # 服务器的地址
+        'LOCATION': [
+            'redis://172.16.82.246/5489/0',
+        ],
+        # 缓存中键的前缀(解决多个项目共享同一个缓存时键的名字冲突的问题)
+        'KEY_PREFIX': 'vote',
+        # 缓存服务的配参数
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+            # 配置连接池（减少频繁的创建和释放Redis连接造成的网络开销
+            'CONNECTION_POOL_KWARGS': {
+                'max_connections': 1000,
+            },
+            'PASSWORD': 'yourpass',
+        }
+    },
+}
