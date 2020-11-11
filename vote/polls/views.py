@@ -132,3 +132,17 @@ def send_mobile_code(request: HttpRequest, tel) -> HttpResponse:
     message = f'您的短信验证码为{code}, 【铁壳测试】'
     send_message_by_sms(tel=tel, message=message)
     return JsonResponse({'code': 20000, 'message': '短信验证码已经发送到您的手机'})
+
+
+
+def is_unique_username(request: HttpRequest) -> HttpResponse:
+    """检查用户唯一性"""
+    username = request.GET.get('username')
+    if check_username(username):
+        if User.objects.filter(username=username).exists():
+            data = {'code': 30001, 'message': '用户已被注册'}
+        else:
+            data = {'code': 30000, 'message': '用户名可以使用'}
+    else:
+        data = {'code': 30002, 'message': '无效的用户名'}
+    return JsonResponse(data)

@@ -55,6 +55,7 @@
                 <div class="input">
                     <label>用户名：</label>
                     <input type="text" name="username" required minlength="4" maxlength="20">
+                    <span></span>
                 </div>
                 <div class="input">
                     <label>密码：</label>
@@ -96,6 +97,23 @@
                 alert('请输入正确的手机号码')
             }
         })
+
+        $('input[name=username]').on('blur', evt => {
+            let username = $(evt.target).val().trim()
+            if (/\w{6,20}/.test(username)) {
+                $.getJSON('/check/?username=' + username, json => {
+                    let span = $(evt.target).next().text('')
+                    if (json.code === 30000) {
+                        span.css('color', 'green').text('√')
+                    } else {
+                        span.css('color', 'red').text('x')
+                    }
+                })
+            } else{
+                alert('用户名由字母、数字、下划线构成，长度为6-20个字符')
+            }
+        })
+
     </script>
 </body>
 </html>
