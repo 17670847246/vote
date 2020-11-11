@@ -72,7 +72,9 @@ def login(request: HttpRequest) -> HttpResponse:
             password = request.POST.get('password', '')
             if check_username(username) and check_password(password):
                 password = to_md5_hex(password)
-                user = User.objects.filter(username=username, password=password).first()
+                user = User.objects\
+                    .filter(Q(username=username) | Q(tel=username))\
+                    .filter(password=password).first()
                 if user:
                     request.session['userid'] = user.no
                     request.session['username'] = user.username
